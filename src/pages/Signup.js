@@ -2,26 +2,23 @@ import { React, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import {RxAvatar} from "react-icons/rx"
+import { RxAvatar } from "react-icons/rx";
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [name, setName]= useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [avatar,setAvatar]= useState(null);
+  const [avatar, setAvatar] = useState(null);
   // const [file,setFile]= useState()
 
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
+  };
 
-  const handleFileInputChange=(e)=>{
-    const file=e.target.files[0];
-    setAvatar(file)
-  }
-
-  
-  const handleSubmit=()=>{
-    console.log("Submit is completed")
-  }
-
+  const handleSubmit = () => {
+    console.log("Submit is completed");
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -30,42 +27,43 @@ const Signup = () => {
           Register New User
         </h2>
       </div>
-   
+
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6 " onSubmit={handleSubmit} >
-          <div className=" text-center justify-center w-50 m-auto">
-               <label htmlFor="avatar"
-               className="block text-sm font-medium items-center "
-          
-               >
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10  ">
+          <form className="space-y-6 " onSubmit={handleSubmit}>
+            <div className=" text-center justify-center w-50 m-auto">
+              <label
+                htmlFor="avatar"
+                className="block text-sm font-medium items-center "
+              ></label>
 
-
-               </label>
-
-               <div className="mt-2 flex items-center">
-               
-
-                <label htmlFor="file-input"
-                 className="h-8 flex items-center justify-center px-4">
- <span className="inline-block h-12 w-12 rounded-full overflow-hidden">
-                  {
-                    avatar ? 
-                    (
-                      <img src={URL.createObjectURL(avatar)} alt="avatar" className="h-full w-full object-cover rounded-full" />
-                    ):(
+              <div className="mt-2 flex items-center">
+                <label
+                  htmlFor="file-input"
+                  className="h-8 flex items-center justify-center px-4"
+                >
+                  <span className="inline-block h-12 w-12 rounded-full overflow-hidden me-7 ">
+                    {avatar ? (
+                      <img
+                        src={URL.createObjectURL(avatar)}
+                        alt="avatar"
+                        className="h-full w-full object-cover rounded-full"
+                      />
+                    ) : (
                       <RxAvatar className="h-10 w-10" />
-                    )
-                  }
-                </span>
-                  <input type="file" name="avatar" id="file-input" accept=".jpg,.jpeg,.png"
-                  onChange={handleFileInputChange}
-                  className="sr-only"
+                    )}
+                  </span>
+                  <input
+                    type="file"
+                    name="avatar"
+                    id="file-input"
+                    accept=".jpg,.jpeg,.png"
+                    onChange={handleFileInputChange}
+                    className="sr-only"
                   />
-                 </label>
-               </div>
-
-             </div>
+                </label>
+              </div>
+            </div>
             <div>
               <label
                 htmlFor="name"
@@ -78,6 +76,7 @@ const Signup = () => {
                   type="text"
                   name="text"
                   autoComplete="name"
+                  placeholder="Enter a full name"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -97,6 +96,7 @@ const Signup = () => {
                   type="eamil"
                   name="email"
                   autoComplete="email"
+                  placeholder="Enter a email address"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -116,6 +116,7 @@ const Signup = () => {
                   type={visible ? "text" : "password"}
                   name="password"
                   autoComplete="current-password"
+                  placeholder="Enter a password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -136,7 +137,7 @@ const Signup = () => {
                 )}
               </div>
             </div>
-             {/* <div className="">
+            {/* <div className="">
                <label htmlFor="avatar"
                className="block text-sm font-medium items-center "
           
@@ -168,7 +169,10 @@ const Signup = () => {
                </div>
 
              </div> */}
-            <button type="submit" className="relative text-center h=[40px] justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-sm bg-yellow-600 hover:bg-yellow-500">
+            <button
+              type="submit"
+              className="relative text-center h=[40px] justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-sm bg-yellow-600 hover:bg-yellow-500"
+            >
               Submit
             </button>
             <div className="flex items-center w-full">

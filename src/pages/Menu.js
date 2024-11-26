@@ -329,15 +329,6 @@ const allmenuData = [
     },
   },
 
-  {
-
-    heading: "Atlas Copco Compressor Parts",
-    data_1:
-    {
-      title: 'Air Copco VT 4 Parts',
-      pageUrl: './pages/Components/AirCopcoVT4Parts/Aircopcovt4parts.js'
-    }
-  },
 
 ];
 
@@ -356,7 +347,7 @@ const Menu = () => {
       <Grid container className="home-page-images mt-5" spacing={3}>
         {allmenuData.map((menuItem, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ maxWidth: 345, background: "#1D2B53", color: "#fff" }}  >
+            <Card sx={{ width:"100%", height:"100%", background: "#1D2B53", color: "#fff" }}  >
               <CardActionArea >
                 <CardContent >
                   <Typography variant="h5" component="div" className='headingofmenu'>
